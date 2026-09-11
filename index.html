@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Classroom Savings</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;color:#1f2937}
+    *{box-sizing:border-box}
+    body{margin:0;background:#f7f8fa;min-height:100vh}
+    .topbar{height:8px;background:#1d4ed8}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px}
+    .card{background:#fff;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.08);padding:28px}
+    h1{margin:0 0 8px;font-size:28px}
+    p{line-height:1.65}
+    .status{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#eef2ff;color:#3730a3;font-size:14px}
+    .dot{width:9px;height:9px;border-radius:50%;background:#22c55e}
+    .btn{display:inline-block;border:0;border-radius:10px;padding:11px 16px;background:#1d4ed8;color:#fff;text-decoration:none;cursor:pointer}
+    .btn.secondary{background:#e5e7eb;color:#111827}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .small{color:#6b7280;font-size:14px}
+    code{background:#f1f5f9;padding:2px 6px;border-radius:6px}
+  </style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <main class="wrap">
+    <section class="card">
+      <span class="status"><span class="dot"></span> GitHub Pages Frontend</span>
+      <h1>ระบบออมทรัพย์เงินห้อง</h1>
+      <p>
+        หน้าเว็บนี้ถูกวางไว้บน GitHub Pages และใช้ Apps Script เป็นฝั่งประมวลผล/ฐานข้อมูล
+        โดยไม่ฝังหน้า Apps Script ด้วย iframe จึงช่วยหลีกเลี่ยงปัญหาแถบสีเทาหรือพื้นที่
+        sandbox ที่เกิดจากการแสดงผลหน้า HTML ของ Apps Script โดยตรง
+      </p>
+
+      <div class="actions">
+        <a class="btn" href="https://script.google.com/macros/s/AKfycbxKjTnnvencJqOdPuktSiAEwvcKP1CqM8DkxTm6ifMGSY5hM0iy45THm-QdmR0NqTeh8w/exec" target="_blank" rel="noopener">
+          เปิดระบบ Apps Script
+        </a>
+        <button class="btn secondary" onclick="copyApiUrl()">คัดลอกลิงก์ Web App</button>
+      </div>
+
+      <p class="small" id="msg">
+        เปลี่ยน <code>REPLACE_WITH_WEB_APP_DEPLOYMENT_ID</code> เป็น URL Web App ที่ลงท้ายด้วย <code>/exec</code>
+        ของโปรเจกต์ Apps Script หลักของคุณ ไม่ใช่ URL <code>/macros/library/...</code>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const WEB_APP_URL =
+      'https://script.google.com/macros/s/AKfycbxKjTnnvencJqOdPuktSiAEwvcKP1CqM8DkxTm6ifMGSY5hM0iy45THm-QdmR0NqTeh8w/exec';
+
+    function copyApiUrl() {
+      navigator.clipboard.writeText(WEB_APP_URL)
+        .then(() => {
+          document.getElementById('msg').textContent = 'คัดลอกลิงก์ Web App แล้ว';
+        })
+        .catch(() => {
+          document.getElementById('msg').textContent = 'คัดลอกอัตโนมัติไม่ได้ กรุณาคัดลอก URL จากโค้ดในไฟล์นี้';
+        });
+    }
+  </script>
+</body>
+</html>
